@@ -6,54 +6,54 @@
 /*   By: scervell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:29:05 by scervell          #+#    #+#             */
-/*   Updated: 2023/10/30 00:07:42 by scervell         ###   ########.fr       */
+/*   Updated: 2023/11/02 07:53:01 by scervell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_order(int n)
+static int	length(int n)
 {
-	int		i;
-	float	j;
+	int	s;
 
-	j = (float)n;
-	i = 0;
 	if (n == 0)
 		return (1);
-	while (j >= 1 || j <= -1)
+	s = 0;
+	if (n < 0)
+		s = 1;
+	while (n)
 	{
-		j /= 10;
-		i++;
-		if (j > -1 && j < 0)
-			i++;
+		s++;
+		n /= 10;
 	}
-	return (i);
+	return (s);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*array;
-	int		j;
+	char			*str;
+	int				len;
+	unsigned int	nb;
 
-	j = ft_order(n);
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	array = (char *)malloc(j + 1);
-	if (array == NULL)
+	len = length(n);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
-	array[j] = '\0';
+	str[len] = '\0';
+	len--;
+	str[len] = '0';
 	if (n < 0)
 	{
-		array[0] = '-';
-		n *= -1;
+		str[0] = '-';
+		nb = -n;
 	}
-	if (n == 0)
-		array[0] = '0';
-	while (n > 0)
+	else
+		nb = n;
+	while (nb)
 	{
-		array[--j] = (n % 10) + '0';
-		n /= 10;
+		str[len] = ('0' + (nb % 10));
+		nb = nb / 10;
+		len--;
 	}
-	return (array);
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: scervell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 19:41:43 by scervell          #+#    #+#             */
-/*   Updated: 2023/10/29 21:42:30 by scervell         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:50:21 by scervell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	start;
 	size_t	end;
 
-	if (s1 == NULL || set == NULL)
+	if (!s1 || !set)
 		return (NULL);
 	start = 0;
 	while (s1[start] != '\0' && ft_strchr(set, s1[start]) != NULL)

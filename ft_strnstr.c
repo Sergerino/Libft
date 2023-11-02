@@ -6,7 +6,7 @@
 /*   By: scervell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:42:12 by scervell          #+#    #+#             */
-/*   Updated: 2023/10/29 21:01:36 by scervell         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:21:08 by scervell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,21 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (*little == 0)
+	if (!big || !little)
+		return (NULL);
+	if (!*little)
 		return ((char *)big);
 	i = 0;
 	while (big[i] && i < len)
 	{
 		j = 0;
-		while (little[j] && i + j < len && big[i + j] == little[j])
+		while (big[i + j] == little[j] && i + j < len)
+		{
+			if (little[j + 1] == 0)
+				return ((char *)big + i);
 			j++;
-		if (little[j] == '\0')
-			return ((char *)&big[i]);
+		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

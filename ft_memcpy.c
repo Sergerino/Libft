@@ -6,7 +6,7 @@
 /*   By: scervell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:43:21 by scervell          #+#    #+#             */
-/*   Updated: 2023/10/30 01:14:46 by scervell         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:42:19 by scervell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,14 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned char		*dest;
-	unsigned const char	*sourc;
-	size_t				i;
+	unsigned char		*d;
+	const unsigned char	*s;
 
-	dest = (unsigned char *)dst;
-	sourc = (unsigned const char *)src;
-	i = 0;
-	if (dest == NULL && sourc == NULL)
+	if (!dst || !src)
 		return (NULL);
-	while (i < n)
-	{
-		dest[i] = sourc[i];
-		i++;
-	}
+	d = (unsigned char *)dst;
+	s = (const unsigned char *)src;
+	while (n-- > 0)
+		*d++ = *s++;
 	return (dst);
 }
