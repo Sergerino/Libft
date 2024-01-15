@@ -6,17 +6,17 @@
 /*   By: scervell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 19:43:03 by scervell          #+#    #+#             */
-/*   Updated: 2023/10/30 01:05:12 by scervell         ###   ########.fr       */
+/*   Updated: 2024/01/15 10:51:08 by scervell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static char	**get_free(char **array, size_t i)
+static char	**error_mem(char **arr, size_t i)
 {
-	while (array[i] != NULL)
-		free(array[i++]);
-	free(array);
+	while (arr[i] != NULL)
+		free(arr[i++]);
+	free(arr);
 	return (NULL);
 }
 
@@ -37,7 +37,7 @@ static int	word_count(const char *s, char c)
 	return (i);
 }
 
-static char	*get_mem(const char *s, char c)
+static char	*word_mem(const char *s, char c)
 {
 	char	*arr;
 	int		i;
@@ -47,8 +47,8 @@ static char	*get_mem(const char *s, char c)
 	j = 0;
 	while (s[i] != c && s[i] != '\0')
 		i++;
-	arr = (char *)malloc(i + 1);
-	if (arr == NULL)
+	arr = malloc(i + 1);
+	if (!arr)
 		return (NULL);
 	while (j < i)
 	{
@@ -61,12 +61,12 @@ static char	*get_mem(const char *s, char c)
 
 char	**ft_split(const char *s, char c)
 {
-	char	**array;
-	int		j;
+	char	**arr;
+	int		i;
 
-	j = 0;
-	array = (char **)malloc((word_count(s, c) + 1) * sizeof(char *));
-	if (array == NULL)
+	i = 0;
+	arr = malloc((word_count(s, c) + 1) * sizeof(char *));
+	if (!arr)
 		return (NULL);
 	while (*s != '\0')
 	{
@@ -74,14 +74,14 @@ char	**ft_split(const char *s, char c)
 			s++;
 		if (*s != c && *s != '\0')
 		{
-			array[j] = get_mem(s, c);
-			if (array[j] == NULL)
-				return (get_free(array, 0));
-			j++;
+			arr[i] = word_mem(s, c);
+			if (arr[i] == NULL)
+				return (error_mem(arr, 0));
+			i++;
 		}
 		while (*s != c && *s != '\0')
 			s++;
 	}
-	array[j] = NULL;
-	return (array);
+	arr[i] = NULL;
+	return (arr);
 }

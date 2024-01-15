@@ -6,7 +6,7 @@
 /*   By: scervell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 05:11:58 by scervell          #+#    #+#             */
-/*   Updated: 2023/10/29 23:38:05 by scervell         ###   ########.fr       */
+/*   Updated: 2024/01/13 18:28:26 by scervell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int		count;
-	t_list	*node;
+	size_t	i;
 
-	node = lst;
-	count = 0;
-	while (node != NULL)
+	i = 0;
+	while (lst != NULL)
 	{
-		count++;
-		node = node->next;
+		lst = lst->next;
+		i++;
 	}
-	return (count);
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: scervell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:38:26 by scervell          #+#    #+#             */
-/*   Updated: 2023/11/02 20:39:18 by scervell         ###   ########.fr       */
+/*   Updated: 2024/01/13 18:28:15 by scervell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		if (!tmp)
 		{
 			ft_lstclear(&new_lst, del);
+			del(content);
 			return (NULL);
 		}
 		ft_lstadd_back(&new_lst, tmp);

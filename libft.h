@@ -6,7 +6,7 @@
 /*   By: scervell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 19:11:57 by scervell          #+#    #+#             */
-/*   Updated: 2023/10/30 01:10:20 by scervell         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:37:14 by scervell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 
+// bonus - structs
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 
 }	t_list;
-// bonus - structs
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstclear(t_list **lst, void (*del)(void *));

@@ -6,7 +6,7 @@
 /*   By: scervell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:29:05 by scervell          #+#    #+#             */
-/*   Updated: 2023/11/02 07:53:01 by scervell         ###   ########.fr       */
+/*   Updated: 2024/01/15 06:56:29 by scervell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_itoa(int n)
 	unsigned int	nb;
 
 	len = length(n);
-	str = (char *)malloc(sizeof(char) * (len + 1));
+	str = malloc(len + 1);
 	if (!str)
 		return (NULL);
 	str[len] = '\0';
