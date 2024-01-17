@@ -6,7 +6,7 @@
 /*   By: scervell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:29:05 by scervell          #+#    #+#             */
-/*   Updated: 2024/01/15 06:56:29 by scervell         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:09:53 by scervell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 static int	length(int n)
 {
-	int	s;
+	int	i;
 
 	if (n == 0)
 		return (1);
-	s = 0;
+	i = 0;
 	if (n < 0)
-		s = 1;
+		i = 1;
 	while (n)
 	{
-		s++;
+		i++;
 		n /= 10;
 	}
-	return (s);
+	return (i);
 }
 
 char	*ft_itoa(int n)
